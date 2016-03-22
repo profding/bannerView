@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "bannerView.h"
 
 @interface ViewController ()
 
@@ -17,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    bannerView *bannerV = [[bannerView alloc]
+                           initWithFrame:CGRectMake(0, 100, [UIScreen mainScreen].bounds.size.width, 50)];
+    bannerV.bannerList = @[@"北京好",@"江西是个好地方",@"上海也不错啊~"];
+    [self.view addSubview:bannerV];
+    
 }
 
 - (void)didReceiveMemoryWarning {
