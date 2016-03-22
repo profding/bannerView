@@ -1,2 +1,2 @@
 # bannerView
-广告播放view
+ 滚动播放 广告View
