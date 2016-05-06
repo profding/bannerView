@@ -10,6 +10,10 @@
 #import "Masonry.h"
 
 @implementation bannerView
+{
+    NSTimer * _timer;
+}
+
 
 
 /**
@@ -64,11 +68,12 @@ static int countIndex = 0;
     [self addSubview:self.bannerLabel];
     
     // 每2s 切换 广告标语
-    [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                     target:self
-                                   selector:@selector(changeBanner)
-                                   userInfo:nil
-                                    repeats:YES];
+    _timer =  [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                               target:self
+                                             selector:@selector(changeBanner)
+                                             userInfo:nil
+                                              repeats:YES];
+
 }
 
 /**
@@ -107,6 +112,19 @@ static int countIndex = 0;
     //    }
 }
 
+- (void)dealloc
+{
+    // purge resources
+    
+    self.bannerList = nil;
+    self.bannerLabel = nil;
+    
+    // invalidate timer
+    
+    if ([_timer isValid]) {
+        [_timer invalidate];
+    }
+}
 
 
 @end
